@@ -16,4 +16,36 @@ public class SidePanel extends BasePage {
         clickWithJSExecuter(alerts, 0, 300);
         return new AlertsPage(driver);
     }
+
+    @FindBy(xpath = "//span[.='Browser Windows']")
+    WebElement browserWindows;
+
+    public BrowserWindowsPage selectBrowserWindows() {
+        clickWithJSExecuter(browserWindows, 0, 300);
+        return new BrowserWindowsPage(driver);
+    }
+
+    @FindBy(xpath = "//span[.='Select Menu']")
+    WebElement selectMenu;
+
+    public SelectMenuPage getSelectMenu() {
+        clickWithJSExecuter(selectMenu, 0, 600);
+        return new SelectMenuPage(driver);
+    }
+
+    @FindBy(xpath = "//span[.='Practice Form']")
+    WebElement practiceForm;
+
+    public PracticeFormPage selectPracticeForm() {
+        clickWithJSExecuter(practiceForm, 0, 200);
+        return new PracticeFormPage(driver);
+    }
+
+    @FindBy(xpath = "//span[.='Text Box']")
+    WebElement textBox;
+
+    public TextBoxPage selectTextBox() {
+        click(textBox);
+        return new TextBoxPage(driver);
+    }
 }

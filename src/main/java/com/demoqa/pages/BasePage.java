@@ -8,9 +8,12 @@ import org.openqa.selenium.support.PageFactory;
 public class BasePage {
     WebDriver driver;
 
+    JavascriptExecutor js;
+
     public BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+        js = (JavascriptExecutor) driver;
     }
 
     public void click(WebElement element) {
@@ -26,8 +29,14 @@ public class BasePage {
     }
 
     public void clickWithJSExecuter(WebElement element, int x, int y) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+//        JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(" + x + "," + y + ")");
         element.click();
+    }
+
+    public void hideIframes() {
+        js.executeScript("document.getElementById('adplus-anchor').style.display='none';");
+        js.executeScript("document.querySelector('footer').style.display='none';");
+
     }
 }

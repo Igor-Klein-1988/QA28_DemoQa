@@ -10,11 +10,21 @@ public class AlertsTests extends TestBase {
     @BeforeMethod
     public void precondition() {
         new HomePage(driver).getAlertsFrameWindows();
-        new SidePanel(driver).selectAlerts();
+        new SidePanel(driver).selectAlerts().hideIframes();
     }
 
     @Test
     public void waitAlertTest() {
         new AlertsPage(driver).clickOnAlertWithTimer();
+    }
+
+    @Test
+    public void alertWithSelectTest() {
+        new AlertsPage(driver).selectResult("Cancel").verifyResult("Cancel");
+    }
+
+    @Test
+    public void sendMessageToAlertTest() {
+        new AlertsPage(driver).sendMessageToAlert("Hello Word!").verifyMessage("Hello Word!");
     }
 }
